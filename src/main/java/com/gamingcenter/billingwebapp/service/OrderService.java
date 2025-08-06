@@ -10,6 +10,7 @@ import com.gamingcenter.billingwebapp.repository.ProductRepository;
 import com.gamingcenter.billingwebapp.repository.SessionRepository;
 import com.gamingcenter.billingwebapp.repository.UserRepository;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class OrderService {
 
     private final OrderRepository orderRepository;
@@ -26,17 +28,6 @@ public class OrderService {
     private final UserRepository userRepository;
     private final ProductService productService;
     private final ModelMapper modelMapper;
-
-    public OrderService(OrderRepository orderRepository, ProductRepository productRepository,
-                        SessionRepository sessionRepository, UserRepository userRepository,
-                        ProductService productService) {
-        this.orderRepository = orderRepository;
-        this.productRepository = productRepository;
-        this.sessionRepository = sessionRepository;
-        this.userRepository = userRepository;
-        this.productService = productService;
-        this.modelMapper = new ModelMapper();
-    }
 
     @Transactional
     public OrderDTO createOrder(OrderRequest request) {

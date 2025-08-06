@@ -6,6 +6,7 @@ import com.gamingcenter.billingwebapp.model.GamingSystem;
 import com.gamingcenter.billingwebapp.model.SystemStatus;
 import com.gamingcenter.billingwebapp.repository.GamingSystemRepository;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -13,15 +14,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class GamingSystemService {
 
     private final GamingSystemRepository systemRepository;
     private final ModelMapper modelMapper;
-
-    public GamingSystemService(GamingSystemRepository gamingSystemRepository, ModelMapper modelMapper) {
-        this.systemRepository = gamingSystemRepository;
-        this.modelMapper = modelMapper;
-    }
 
     @Transactional
     public GamingSystemDTO createSystem(GamingSystemDTO systemDTO) {

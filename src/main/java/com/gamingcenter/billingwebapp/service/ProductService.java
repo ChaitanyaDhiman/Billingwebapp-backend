@@ -5,6 +5,7 @@ import com.gamingcenter.billingwebapp.exceptions.ResourceNotFoundException;
 import com.gamingcenter.billingwebapp.model.Product;
 import com.gamingcenter.billingwebapp.repository.ProductRepository;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -12,15 +13,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class ProductService {
 
     private final ProductRepository productRepository;
     private final ModelMapper modelMapper;
-
-    public ProductService(ProductRepository productRepository, ModelMapper modelMapper) {
-        this.productRepository = productRepository;
-        this.modelMapper = modelMapper;
-    }
 
     @Transactional
     public ProductDTO createProduct(ProductDTO productDTO) {

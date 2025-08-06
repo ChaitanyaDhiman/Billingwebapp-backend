@@ -9,6 +9,7 @@ import com.gamingcenter.billingwebapp.repository.GamingSystemRepository;
 import com.gamingcenter.billingwebapp.repository.SessionRepository;
 import com.gamingcenter.billingwebapp.repository.UserRepository;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -22,6 +23,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class SessionService {
 
     private final SessionRepository sessionRepository;
@@ -30,16 +32,6 @@ public class SessionService {
     private final BillingService billingService;
     private final SimpMessagingTemplate messagingTemplate;
     private final ModelMapper modelMapper;
-
-    public SessionService(SessionRepository sessionRepository, UserRepository userRepository,
-                          GamingSystemRepository systemRepository, BillingService billingService, SimpMessagingTemplate messagingTemplate, ModelMapper modelMapper) {
-        this.sessionRepository = sessionRepository;
-        this.userRepository = userRepository;
-        this.systemRepository = systemRepository;
-        this.billingService = billingService;
-        this.messagingTemplate = messagingTemplate;
-        this.modelMapper = modelMapper;
-    }
 
     @Transactional
     public SessionDTO startSession(CreateSessionRequest request) {

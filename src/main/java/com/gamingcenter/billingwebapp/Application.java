@@ -14,9 +14,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 @SpringBootApplication
-public class BillingwebappApplication {
+public class Application {
 
-    private static final Logger logger = LoggerFactory.getLogger(BillingwebappApplication.class);
+    private static final Logger logger = LoggerFactory.getLogger(Application.class);
 
 
     public static void main(String[] args) {
@@ -59,7 +59,7 @@ public class BillingwebappApplication {
                 logger.error("Error closing resources: {}", e.getMessage());
             }
         }
-        SpringApplication.run(BillingwebappApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
     @Bean

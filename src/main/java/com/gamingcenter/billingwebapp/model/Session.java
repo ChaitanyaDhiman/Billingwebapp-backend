@@ -1,10 +1,7 @@
 package com.gamingcenter.billingwebapp.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -12,6 +9,8 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "sessions")
 @Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Session {
@@ -58,93 +57,5 @@ public class Session {
     @PreUpdate
     protected void onUpdate() {
         updatedAt = LocalDateTime.now();
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public GamingSystem getSystem() {
-        return system;
-    }
-
-    public void setSystem(GamingSystem system) {
-        this.system = system;
-    }
-
-    public LocalDateTime getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(LocalDateTime startTime) {
-        this.startTime = startTime;
-    }
-
-    public LocalDateTime getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(LocalDateTime endTime) {
-        this.endTime = endTime;
-    }
-
-    public SessionStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(SessionStatus status) {
-        this.status = status;
-    }
-
-    public BigDecimal getHourlyRateAtStart() {
-        return hourlyRateAtStart;
-    }
-
-    public void setHourlyRateAtStart(BigDecimal hourlyRateAtStart) {
-        this.hourlyRateAtStart = hourlyRateAtStart;
-    }
-
-    public Integer getActualDurationMinutes() {
-        return actualDurationMinutes;
-    }
-
-    public void setActualDurationMinutes(Integer actualDurationMinutes) {
-        this.actualDurationMinutes = actualDurationMinutes;
-    }
-
-    public BigDecimal getTotalHourlyCharge() {
-        return totalHourlyCharge;
-    }
-
-    public void setTotalHourlyCharge(BigDecimal totalHourlyCharge) {
-        this.totalHourlyCharge = totalHourlyCharge;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
     }
 }

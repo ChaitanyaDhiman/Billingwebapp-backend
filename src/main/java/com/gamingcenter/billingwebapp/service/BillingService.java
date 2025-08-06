@@ -7,6 +7,7 @@ import com.gamingcenter.billingwebapp.repository.BillRepository;
 import com.gamingcenter.billingwebapp.repository.OrderRepository;
 import com.gamingcenter.billingwebapp.repository.SessionRepository;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class BillingService {
 
     private final BillRepository billRepository;
@@ -25,15 +27,6 @@ public class BillingService {
     private final OrderRepository orderRepository;
     private final UserService userService; //To deduct balance from prepaid users
     private final ModelMapper modelMapper;
-
-    public BillingService(BillRepository billRepository, SessionRepository sessionRepository,
-                          OrderRepository orderRepository, UserService userService) {
-        this.billRepository = billRepository;
-        this.sessionRepository = sessionRepository;
-        this.orderRepository = orderRepository;
-        this.userService = userService;
-        this.modelMapper = new ModelMapper();
-    }
 
     @Transactional
     public BillDTO generateBillForSession(Long sessionId) {
