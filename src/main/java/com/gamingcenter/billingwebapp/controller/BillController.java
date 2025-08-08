@@ -4,6 +4,7 @@ import com.gamingcenter.billingwebapp.dto.BillDTO;
 import com.gamingcenter.billingwebapp.dto.PaymentRequest;
 import com.gamingcenter.billingwebapp.service.BillingService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -13,13 +14,10 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 @RestController
 @RequestMapping("/api/bills")
+@RequiredArgsConstructor
 public class BillController {
 
     private final BillingService billingService;
-
-    public BillController(BillingService billingService) {
-        this.billingService = billingService;
-    }
 
     // This endpoint would typically be triggered by SessionService after a session ends.
     // Making it an admin endpoint here for explicit demonstration.

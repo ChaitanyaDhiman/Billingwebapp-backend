@@ -7,6 +7,7 @@ import com.gamingcenter.billingwebapp.security.JwtUtils;
 import com.gamingcenter.billingwebapp.security.UserDetailsImpl;
 import com.gamingcenter.billingwebapp.service.UserService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -21,17 +22,12 @@ import java.util.stream.Collectors;
 @CrossOrigin(origins = "https://localhost:3000", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
+@RequiredArgsConstructor
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;
     private final JwtUtils jwtUtils;
     private final UserService userService;
-
-    public AuthController(AuthenticationManager authenticationManager, JwtUtils jwtUtils, UserService userService) {
-        this.authenticationManager = authenticationManager;
-        this.jwtUtils = jwtUtils;
-        this.userService = userService;
-    }
 
     @PostMapping("/signing")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {

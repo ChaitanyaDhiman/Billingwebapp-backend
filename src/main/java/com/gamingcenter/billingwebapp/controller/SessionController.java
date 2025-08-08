@@ -5,6 +5,7 @@ import com.gamingcenter.billingwebapp.dto.CreateSessionRequest;
 import com.gamingcenter.billingwebapp.dto.SessionDTO;
 import com.gamingcenter.billingwebapp.service.SessionService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -16,13 +17,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/sessions")
 @PreAuthorize("hasRole('ADMIN')") // Only Admins can start/end sessions
+@RequiredArgsConstructor
 public class SessionController {
 
     private final SessionService sessionService;
-
-    public SessionController(SessionService sessionService) {
-        this.sessionService = sessionService;
-    }
 
     @PostMapping("/start")
     public ResponseEntity<SessionDTO> startSession(@Valid @RequestBody CreateSessionRequest request) {

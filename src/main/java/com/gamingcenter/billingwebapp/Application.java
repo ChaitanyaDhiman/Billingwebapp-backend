@@ -6,6 +6,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -67,7 +69,7 @@ public class Application {
         return new ModelMapper();
     }
 
-    /*// Configure CORS to allow requests from the React frontend.
+    // Configure CORS to allow requests from the React frontend.
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
@@ -80,6 +82,6 @@ public class Application {
                         .allowCredentials(true);
             }
         };
-    }*/
+    }
 
 }

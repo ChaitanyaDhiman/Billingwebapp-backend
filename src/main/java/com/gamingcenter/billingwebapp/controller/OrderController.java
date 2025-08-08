@@ -4,6 +4,7 @@ import com.gamingcenter.billingwebapp.dto.OrderDTO;
 import com.gamingcenter.billingwebapp.dto.OrderRequest;
 import com.gamingcenter.billingwebapp.service.OrderService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -14,13 +15,10 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 @RestController
 @RequestMapping("/api/orders")
+@RequiredArgsConstructor
 public class OrderController {
 
     private final OrderService orderService;
-
-    public OrderController(OrderService orderService) {
-        this.orderService = orderService;
-    }
 
     @PostMapping
     @PreAuthorize("hasAnyRole('ADMIN', 'PREPAID', 'POSTPAID')") // Anyone can place an order

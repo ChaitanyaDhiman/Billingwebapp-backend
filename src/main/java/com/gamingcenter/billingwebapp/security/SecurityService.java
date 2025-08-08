@@ -7,6 +7,7 @@ import com.gamingcenter.billingwebapp.repository.BillRepository;
 import com.gamingcenter.billingwebapp.repository.OrderRepository;
 import com.gamingcenter.billingwebapp.repository.SessionRepository;
 import com.gamingcenter.billingwebapp.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -14,20 +15,13 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service("securityService") // This name is used in @PreAuthorize expressions
+@RequiredArgsConstructor
 public class SecurityService {
 
     private final UserRepository userRepository;
     private final SessionRepository sessionRepository;
     private final OrderRepository orderRepository;
     private final BillRepository billRepository;
-
-    public SecurityService(UserRepository userRepository, SessionRepository sessionRepository,
-                           OrderRepository orderRepository, BillRepository billRepository) {
-        this.userRepository = userRepository;
-        this.sessionRepository = sessionRepository;
-        this.orderRepository = orderRepository;
-        this.billRepository = billRepository;
-    }
 
     /**
      * Checks if the currently authenticated user is either the specified user (by ID)

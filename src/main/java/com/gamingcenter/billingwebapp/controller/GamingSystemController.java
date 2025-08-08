@@ -4,6 +4,7 @@ import com.gamingcenter.billingwebapp.dto.GamingSystemDTO;
 import com.gamingcenter.billingwebapp.model.SystemStatus;
 import com.gamingcenter.billingwebapp.service.GamingSystemService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -15,12 +16,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/systems")
 @PreAuthorize("hasRole('ADMIN')")
+@RequiredArgsConstructor
 public class GamingSystemController {
     private final GamingSystemService systemService;
-
-    public GamingSystemController(GamingSystemService systemService) {
-        this.systemService = systemService;
-    }
 
     @PostMapping
     public ResponseEntity<GamingSystemDTO> createSystem(@Valid @RequestBody GamingSystemDTO systemDTO) {
